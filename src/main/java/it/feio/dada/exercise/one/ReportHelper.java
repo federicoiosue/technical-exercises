@@ -4,7 +4,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.SystemUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,13 +16,21 @@ import java.util.*;
  */
 public class ReportHelper {
 
-	public static final int HTTP_STATUS_SUCCESS = 200;
+	private static final int HTTP_STATUS_SUCCESS = 200;
 
 
+	/**
+	 * Builds a report using a source log file by writing processed data into a csv output file.
+	 *
+	 * @param logCsvFile
+	 * @param reportFile
+	 * @throws IOException
+	 */
 	public static void buildReport(File logCsvFile, File reportFile) throws IOException {
 		List<ReportRow> reportRows = convertLogtoReport(readFromSource(logCsvFile), true);
 		for (ReportRow reportRow : reportRows) {
-			FileUtils.writeStringToFile(reportFile, reportRow.toString() + System.lineSeparator(), Charset.defaultCharset(), true);
+			FileUtils.writeStringToFile(reportFile, reportRow.toString() + System.lineSeparator(), Charset
+					.defaultCharset(), true);
 		}
 	}
 

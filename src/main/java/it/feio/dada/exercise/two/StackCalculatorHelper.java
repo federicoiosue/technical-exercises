@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class StackCalculatorHelper {
 
+	/**
+	 * Calculates product of an arbitrary number of multiplicand by converting them to integer arrays and using
+	 * addition operator only.
+	 *
+	 * @param multiplicand Arbitrary number of number to operate on
+	 * @return product as integers array
+	 */
 	public static Integer[] calculateProduct(Integer... multiplicand) {
 		List<Integer[]> multiplicandArrays = numbersToArray(multiplicand);
 		Integer[] product = new Integer[]{1};
